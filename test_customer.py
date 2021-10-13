@@ -1,6 +1,7 @@
 import unittest
-from coins import Quarter
+from coins import Coin, Dime, Penny, Quarter
 from customer import Customer
+from user_interface import coin_selection
 
 class TestGetWalletCoin(unittest.TestCase):
     """ Test for Customer's get_wallet_coin """
@@ -38,8 +39,29 @@ class TestGetWalletCoin(unittest.TestCase):
 
         self.assertIsNone(return_none)
 
-#class TestAddCoinsToWallet(unittest.TestCase):
- #   """ Test for Customer's add_coins_to_wallet """
+class TestAddCoinsToWallet(unittest.TestCase):
+    """ Test for Customer's add_coins_to_wallet """
+   
+    def setUp(self):
+        self.customer = Customer()
+
+    def test_can_pass_list(self):
+        """Pass in list of 3 coins, method should return customer wallet list up by 3"""
+        list = [Quarter(), Dime(), Penny()]
+        self.customer.add_coins_to_wallet(list)
+
+        self.assertEqual(len(self.customer.wallet.money), 91)
+        # for item in self.add_coins_to_wallet:
+        #     print(len(item))
+        # self.assertEqual()
+
+    def test_can_pass_empty_list(self):
+        """Pass in list of 3 coins, method should return customer wallet list up by 3"""
+        self.add_coins_to_wallet = []
+        for item in self.add_coins_to_wallet:
+            if len(item) == 0:
+                print("Len remained the same")
+
 
 
 
