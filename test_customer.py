@@ -1,4 +1,5 @@
 import unittest
+from cans import Cola, OrangeSoda, RootBeer
 from coins import Coin, Dime, Penny, Quarter
 from customer import Customer
 from user_interface import coin_selection
@@ -46,7 +47,7 @@ class TestAddCoinsToWallet(unittest.TestCase):
         self.customer = Customer()
 
     def test_can_pass_list(self):
-        """Pass in list of 3 coins, method should return customer wallet list up by 3"""
+        """Pass in list of 3 coins, method should increase customer wallet list by 3"""
         list = [Quarter(), Dime(), Penny()]
         self.customer.add_coins_to_wallet(list)
 
@@ -58,6 +59,36 @@ class TestAddCoinsToWallet(unittest.TestCase):
         self.customer.add_coins_to_wallet(list)
 
         self.assertEqual(len(self.customer.wallet.money), 88)
+
+class TestAddCanToBackPack(unittest.TestCase):
+    """ Test for Customer's add_can_to_backpack """
+   
+    def setUp(self):
+        self.customer = Customer()
+
+    def test_pass_object_soda(self):
+        """Pass in a Cola object, method should increase customers backpace list by 1"""
+        list =[Cola()]
+        self.customer.add_can_to_backpack(Cola())
+
+        self.assertEqual(len(self.customer.backpack.purchased_cans), 1)
+
+    def test_pass_object_orangesoda(self):
+        """Pass in Orange Soda object, method should increase customers backpace list by 1"""
+        list =[OrangeSoda()]
+        self.customer.add_can_to_backpack(OrangeSoda())
+
+        self.assertEqual(len(self.customer.backpack.purchased_cans), 1)
+
+    def test_pass_object_rootbeer(self):
+        """Pass in a Root Beer object, method should increase customers backpace list by 1"""
+        list =[RootBeer()]
+        self.customer.add_can_to_backpack(RootBeer())
+
+        self.assertEqual(len(self.customer.backpack.purchased_cans), 1) 
+
+   
+
 
 
 
