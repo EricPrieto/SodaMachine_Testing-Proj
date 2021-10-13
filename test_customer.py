@@ -51,16 +51,13 @@ class TestAddCoinsToWallet(unittest.TestCase):
         self.customer.add_coins_to_wallet(list)
 
         self.assertEqual(len(self.customer.wallet.money), 91)
-        # for item in self.add_coins_to_wallet:
-        #     print(len(item))
-        # self.assertEqual()
-
+      
     def test_can_pass_empty_list(self):
-        """Pass in list of 3 coins, method should return customer wallet list up by 3"""
-        self.add_coins_to_wallet = []
-        for item in self.add_coins_to_wallet:
-            if len(item) == 0:
-                print("Len remained the same")
+        """Pass in an empty list, method should not change lenth of money list"""
+        list = []
+        self.customer.add_coins_to_wallet(list)
+
+        self.assertEqual(len(self.customer.wallet.money), 88)
 
 
 
