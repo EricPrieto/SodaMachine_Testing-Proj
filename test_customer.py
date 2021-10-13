@@ -32,6 +32,15 @@ class TestGetWalletCoin(unittest.TestCase):
 
         self.assertEqual(return_coin.value, .25)
 
+    def test_string_invaild(self):
+        """Pass a String, method should return None"""
+        return_none = self.customer.get_wallet_coin("None")
+
+        self.assertIsNone(return_none)
+
+#class TestAddCoinsToWallet(unittest.TestCase):
+ #   """ Test for Customer's add_coins_to_wallet """
+
 
 
 if __name__ == '__main__':
