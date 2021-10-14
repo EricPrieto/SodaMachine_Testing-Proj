@@ -65,38 +65,6 @@ class TestRegisterHasCoin(unittest.TestCase):
         return_none = self.soda_machine.register_has_coin("None")
         self.assertFalse(return_none)
         
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class TestDetermineChangeValue(unittest.TestCase):
     def setUp(self):
         self.soda_machine = SodaMachine()
@@ -116,6 +84,18 @@ class TestDetermineChangeValue(unittest.TestCase):
         return_b = self.soda_machine.determine_change_value(0,0)
         self.assertEqual(return_a,return_b)   
 
+class TestCalculateCoinValue(unittest.TestCase):
+    def setUp(self):
+        self.soda_machine = SodaMachine()
+        Penny()
+        Nickel()
+        Dime()
+        Quarter()
+
+        list = ["Penny","Nickel","Dime","Quarter"]
+        self.soda_machine.calculate_coin_value(list)
+
+        self.assertEqual(list, .41)
         
 
 
