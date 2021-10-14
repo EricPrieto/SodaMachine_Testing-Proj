@@ -1,5 +1,7 @@
 import unittest
+from cans import Can, Cola, OrangeSoda, RootBeer
 from soda_machine import SodaMachine
+from user_interface import soda_selection
 
 class TestFillRegister(unittest.TestCase):
     def setUp(self):
@@ -117,7 +119,26 @@ class TestCalculateCoinValue(unittest.TestCase):
 
 
 
+class GetInventorySoda(unittest.TestCase):
+    def setUp(self):
+        self.soda_machine = SodaMachine()
 
+    def test_inventory_cola(self):
+        return_soda_name = self.soda_machine.get_inventory_soda("Cola")
+        self.assertIsInstance(return_soda_name, Cola)
+
+    def test_inventory_cola(self):
+        return_soda_name = self.soda_machine.get_inventory_soda("OrangeSoda")
+        self.assertIsInstance(return_soda_name, OrangeSoda)
+
+    def test_inventory_cola(self):
+        return_soda_name = self.soda_machine.get_inventory_soda("RootBeer")
+        self.assertIsInstance(return_soda_name, RootBeer)
+
+    def test_inventory_cola(self):
+        return_soda_name = self.soda_machine.get_inventory_soda("MountianDew")
+        self.assertEqual(return_soda_name, None)
+        
 
 
 
