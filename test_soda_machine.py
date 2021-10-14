@@ -1,5 +1,6 @@
 from typing import List
 import unittest
+from unittest import result
 from cans import Can, Cola, OrangeSoda, RootBeer
 from coins import Coin, Dime, Penny, Nickel, Quarter
 from soda_machine import SodaMachine
@@ -125,6 +126,25 @@ class GetInventorySoda(unittest.TestCase):
     def test_inventory_cola(self):
         return_soda_name = self.soda_machine.get_inventory_soda("MountianDew")
         self.assertEqual(return_soda_name, None)
+
+
+class TestReturnInventory(unittest.TestCase):
+    def setUp(self):
+        self.soda_machine = SodaMachine()
+
+    def test_return_inventory(self):
+        cola = Cola()
+        self.soda_machine.return_inventory(cola)
+        self.assertEqual(31, len(self.soda_machine.inventory))
+
+class TestDepositCoinsIntoRegister(unittest.TestCase):
+    def setUp(self):
+        self.soda_machine = SodaMachine()
+
+    def test_deposit_list(self):
+        list = [Quarter(), Dime(), Penny(), Nickel()]
+        self.soda_machine.deposit_coins_into_register(list)
+        self.assertEqual(len(self.soda_machine.register), 92) 
         
 
 
