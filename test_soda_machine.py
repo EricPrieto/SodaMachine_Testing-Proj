@@ -1,7 +1,9 @@
 from typing import List
 import unittest
-from coins import Dime, Nickel, Penny, Quarter
+from cans import Can, Cola, OrangeSoda, RootBeer
+from coins import Coin, Dime, Penny, Nickel, Quarter
 from soda_machine import SodaMachine
+from user_interface import coin_selection, soda_selection
 
 class TestFillRegister(unittest.TestCase):
     def setUp(self):
@@ -89,46 +91,41 @@ class TestDetermineChangeValue(unittest.TestCase):
 class TestCalculateCoinValue(unittest.TestCase):
     def setUp(self):
         self.soda_machine = SodaMachine()
-        Penny()
-        Nickel()
-        Dime()
-        Quarter()
-
-        list = ["Penny", "Nickel", "Dime", "Quarter"]
-        self.soda_machine.calculate_coin_value(list)              
-                
-        self.assertEqual( TestCalculateCoinValue, .43)
+       
+    def test_coin_list_value(self):
+        List = [Quarter(), Dime(), Nickel(), Penny()]
         
+        result = self.soda_machine.calculate_coin_value(List)              
+        print(result)
+        self.assertEqual(result, 0.41)
 
+    def test_coin_list_emtpy(self):
+        List = []
 
-        def calculate_coin_value(self, coin_list):
-        """Takes in a list of coins, returns the monetary value of list."""
-        total_value = 0
-        for coin in coin_list:
-            total_value += coin.value
-        return round(total_value, 2)
+        result = self.soda_machine.calculate_coin_value(List)              
+        print(result)
+        self.assertEqual(result, 0.)
+        
+class GetInventorySoda(unittest.TestCase):
+    def setUp(self):
+        self.soda_machine = SodaMachine()
 
-         self. customer.get_wallet_coin("Penny")
+    def test_inventory_cola(self):
+        return_soda_name = self.soda_machine.get_inventory_soda("Cola")
+        self.assertIsInstance(return_soda_name, Cola)
 
-        self.assertEqual(return_coin.value, .01)
+    def test_inventory_cola(self):
+        return_soda_name = self.soda_machine.get_inventory_soda("OrangeSoda")
+        self.assertIsInstance(return_soda_name, OrangeSoda)
 
+    def test_inventory_cola(self):
+        return_soda_name = self.soda_machine.get_inventory_soda("RootBeer")
+        self.assertIsInstance(return_soda_name, RootBeer)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def test_inventory_cola(self):
+        return_soda_name = self.soda_machine.get_inventory_soda("MountianDew")
+        self.assertEqual(return_soda_name, None)
+        
 
 
 
