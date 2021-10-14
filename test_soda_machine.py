@@ -15,6 +15,30 @@ class TestFillInventory(unittest.TestCase):
 
     def test_fill_inventory(self):
         self.assertEqual(30, len(self.soda_machine.inventory))
+
+class TestGetCoinFromRegister(unittest.TestCase):
+    def setUp(self):
+        self.soda_machine = SodaMachine()
+
+    def test_nickel_from_register(self):
+        return_coin = self.soda_machine.get_coin_from_register("Nickel")
+        self.assertEqual(return_coin.value, .05)
+
+    def test_dime_from_register(self):
+        return_coin = self.soda_machine.get_coin_from_register("Dime")
+        self.assertEqual(return_coin.value, .10)
+
+    def test_penny_from_register(self):
+        return_coin = self.soda_machine.get_coin_from_register("Penny")
+        self.assertEqual(return_coin.value, .01) 
+    
+    def test_quarter_from_register(self):
+        return_coin = self.soda_machine.get_coin_from_register("Quarter")
+        self.assertEqual(return_coin.value, .25)
+
+    def test_string_invalid(self):
+        return_none = self.soda_machine.get_coin_from_register("None")
+       
         
 
 
