@@ -1,4 +1,6 @@
+from typing import List
 import unittest
+from coins import Dime, Nickel, Penny, Quarter
 from soda_machine import SodaMachine
 
 class TestFillRegister(unittest.TestCase):
@@ -92,14 +94,23 @@ class TestCalculateCoinValue(unittest.TestCase):
         Dime()
         Quarter()
 
-        list = ["Penny","Nickel","Dime","Quarter"]
-        self.soda_machine.calculate_coin_value(list)
-
-        self.assertEqual(list, .41)
+        list = ["Penny", "Nickel", "Dime", "Quarter"]
+        self.soda_machine.calculate_coin_value(list)              
+                
+        self.assertEqual( TestCalculateCoinValue, .43)
         
 
 
+        def calculate_coin_value(self, coin_list):
+        """Takes in a list of coins, returns the monetary value of list."""
+        total_value = 0
+        for coin in coin_list:
+            total_value += coin.value
+        return round(total_value, 2)
 
+         self. customer.get_wallet_coin("Penny")
+
+        self.assertEqual(return_coin.value, .01)
 
 
 
